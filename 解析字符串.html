@@ -25,10 +25,11 @@
       //   console.log(data);
 
       const Geturl = (url) => {
-        const str1 = url.indexOf('?'),
-          str2 = url.indexOf('#');
+        let str1 = url.indexOf('?');
+        let str2 = url.indexOf('#');
         count = url.slice(str1 + 1, str2).split('&');
         console.log(count);
+
         return count.reduce((pre, cur) => {
           const [key, val] = cur.split('=');
           pre[key] = val;
