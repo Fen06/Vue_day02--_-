@@ -34,6 +34,11 @@
       <textarea v-model.trim="intro"></textarea>
     </div>
 
+    <div>
+      <span>是否保存：</span>
+      <input type="checkbox" v-model="isTrue" />
+    </div>
+
     =================================================
     <div>
       姓名：{{ username }}
@@ -45,6 +50,8 @@
       电话号码：{{ photo }}
       <br />
       爱好：{{ hobby }}
+      <br />
+      是否保存：{{ isTrue ? '是' : '否' }}
     </div>
   </div>
 </template>
@@ -59,6 +66,7 @@ export default {
       photo: '',
       hobby: ['敲代码', '打麻将'],
       intro: '',
+      isTrue: '',
     };
   },
 };
