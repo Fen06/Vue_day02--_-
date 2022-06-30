@@ -3,7 +3,7 @@
     <p>请选择你要购买的书籍</p>
     <ul>
       <li v-for="(item, int) in arr" :key="int">
-        <span>{{ item['name'] }}</span>
+        <span>{{ item.name }}</span>
         <button @click="buy(int)">购买</button>
       </li>
     </ul>
