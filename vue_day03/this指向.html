@@ -9,18 +9,19 @@
   <body>
     <script>
       function fn() {
-        console.log(this);
+        console.log(this); //==========================>window???
       }
       const obj = {
         name: 'test',
         a() {
-          console.log(this.a);
+          console.log(this.a); //=================>a(){}
+
           setTimeout(function () {
-            console.log(this.a);
+            console.log(this.a); //================>undefined
           }, 1000);
         },
         b() {
-          console.log(this);
+          console.log(this); //================>obj
           fn();
         },
       };
