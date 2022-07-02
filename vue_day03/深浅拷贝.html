@@ -9,34 +9,18 @@
   <body>
     <script type="text/javascript">
       const _completeDeepClone = (target, map = new Map()) => {
-        function dp(target) {
-          let result = Array.isArray(target) ? [] : {};
-          map.set(target, result);
-          for (const key in target) {
-            let item = target[key];
-            if (typeof item === 'object') {
-              result[key] = dp(item);
-            } else {
-              result[key] = item;
-            }
+        for (const key in map) {
+          var item = map[key];
+          if (item instanceof Array) {
+            target[key] = [];
+            _completeDeepClone(target[key], item);
+          } else if (item instanceof Object) {
+            target[key] = {};
+            _completeDeepClone(target[key], item);
+          } else {
+            target[key] = item;
           }
-          return result;
         }
-        return dp(target);
-
-        // for (let key in target) {
-        //   let item = target[key];
-        //   if (item instanceof Array) {
-        //     map[key] = [];
-        //     _completeDeepClone(map[key], item);
-        //   } else if (item in Object) {
-        //     map[key] = {};
-        //     _completeDeepClone(map[key], item);
-        //   } else {
-        //     return (map[key] = item);
-        //   }
-        // }
-        // return map;
       };
 
       var obj = {
@@ -45,49 +29,12 @@
         msg: {
           age: 20,
         },
-        color: ['red', 'green'],
       };
       var o = {};
 
-      _completeDeepClone(o);
+      _completeDeepClone(o, obj);
       console.log(o);
-
-      //   function deepCopy(data) {
-      //     const map = new Map(); // 键可以是一个对象
-      //     function dp(data) {
-      //       const existObj = map.get(data);
-      //       // 看一下当前需要处理的数据是否已经被处理过(只要处理过了，都会通过map缓存起来)
-      //       if (existObj) {
-      //         //  已经被处理过了，第二次见到这个对象了(相同的引用的地址)
-      //         //  只要返回上次处理之后的结果
-      //         return existObj;
-      //       }
-      //       let result = Array.isArray(data) ? [] : {};
-      //       map.set(data, result);
-      //       for (const key in data) {
-      //         let item = data[key];
-      //         if (typeof item === 'object') {
-      //           result[key] = dp(item);
-      //         } else {
-      //           result[key] = item;
-      //         }
-      //       }
-      //       return result;
-      //     }
-      //     console.log(map);
-      //     return dp(data);
-      //   }
-
-      //   const d = {
-      //     name: ['a', 'b', 'c'],
-      //     oo: {
-      //       kk: 'uu',
-      //       yy: 'pp',
-      //     },
-      //   };
-
-      //   deepCopy(d);
-      //
+      console.log(obj);
     </script>
   </body>
 </html>
