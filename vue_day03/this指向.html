@@ -8,6 +8,9 @@
   </head>
   <body>
     <script>
+      function fn() {
+        console.log(this);
+      }
       const obj = {
         name: 'test',
         a() {

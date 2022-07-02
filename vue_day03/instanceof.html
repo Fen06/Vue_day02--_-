@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function findx(a, b) {
+        let x = b.prototype;
+        a = a.__proto__;
+        while (true) {
+          if (a === null) return false;
+          if (a === x) return true;
+          a = a.__proto__;
+        }
+      }
+
+      let a = 12;
+      let b = '1212';
+      console.log(null instanceof Object);
+      console.log(Number instanceof Object);
+      console.log(String instanceof Number);
+      console.log(a.__proto__ instanceof Object);
+      console.log(b.__proto__ instanceof String);
+    </script>
+  </body>
+</html>
