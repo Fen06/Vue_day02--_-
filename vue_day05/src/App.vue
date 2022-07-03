@@ -13,11 +13,12 @@ import TodoHeader from './components/TodoHeader.vue';
 export default {
   data() {
     return {
-      list: [
-        { id: 100, name: '吃饭', isDone: true },
-        { id: 201, name: '睡觉', isDone: false },
-        { id: 103, name: '打豆豆', isDone: true },
-      ],
+      list: JSON.parse(localStorage.getItem('list')) || [],
+      // list: [
+      //   { id: 100, name: '吃饭', isDone: true },
+      //   { id: 201, name: '睡觉', isDone: false },
+      //   { id: 103, name: '打豆豆', isDone: true },
+      // ],
 
       gettrue: '',
     };
@@ -67,6 +68,15 @@ export default {
       } else {
         return this.list;
       }
+    },
+  },
+
+  watch: {
+    list: {
+      deep: true,
+      handler(val) {
+        localStorage.setItem('list', JSON.stringify(val || []));
+      },
     },
   },
 };
