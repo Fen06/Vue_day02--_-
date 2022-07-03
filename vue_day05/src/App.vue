@@ -1,8 +1,8 @@
 <template>
   <div>
     <TodoHeader @down="down"></TodoHeader>
-    <TodoMain :list="list"></TodoMain>
-    <TodoFooter></TodoFooter>
+    <TodoMain :list="show" @del="del"></TodoMain>
+    <TodoFooter :sum="sum" @filter="filter"></TodoFooter>
   </div>
 </template>
 
@@ -18,6 +18,8 @@ export default {
         { id: 201, name: '睡觉', isDone: false },
         { id: 103, name: '打豆豆', isDone: true },
       ],
+
+      gettrue: '',
     };
   },
   components: {
@@ -36,6 +38,31 @@ export default {
         name: val,
         isDone: false,
       });
+    },
+
+    del(id) {
+      const index = this.list.findIndex((ele) => ele.id == id);
+
+      this.list.splice(index, 1);
+    },
+    filter(val) {
+      this.gettrue = val;
+    },
+  },
+
+  computed: {
+    sum() {
+      return this.list.filter((ele) => !ele.isDone).length;
+    },
+
+    show() {
+      if (this.gettrue == 'no') {
+        return this.list.filter((ele) => !ele.isDone);
+      } else if (this.gettrue == 'yes') {
+        return this.list.filter((ele) => ele.isDone);
+      } else {
+        return this.list;
+      }
     },
   },
 };
