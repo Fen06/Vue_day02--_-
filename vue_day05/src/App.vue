@@ -2,7 +2,7 @@
   <div>
     <TodoHeader @down="down"></TodoHeader>
     <TodoMain :list="show" @del="del"></TodoMain>
-    <TodoFooter :sum="sum" @filter="filter"></TodoFooter>
+    <TodoFooter :sum="sum" @filter="filter" @clear="clear"></TodoFooter>
   </div>
 </template>
 
@@ -47,6 +47,10 @@ export default {
     },
     filter(val) {
       this.gettrue = val;
+    },
+
+    clear() {
+      this.list.filter((ele) => (ele.isDone = false));
     },
   },
 

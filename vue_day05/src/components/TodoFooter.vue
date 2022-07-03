@@ -29,7 +29,7 @@
         >
       </li>
     </ul>
-    <button class="clear-completed">清除已完成</button>
+    <button class="clear-completed" @click="clear">清除已完成</button>
   </footer>
 </template>
 
@@ -47,6 +47,10 @@ export default {
       this.isTrue = val;
       this.$emit('filter', val);
     },
+
+    clear(){
+    this.$emit('clear')
+    }
   },
 };
 </script>
