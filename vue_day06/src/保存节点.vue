@@ -1,6 +1,21 @@
 <template>
-  <div>
-    <BOOKMIN :item="list" @del="del"></BOOKMIN>
+  <div id="app">
+    <input type="text" placeholder="搜索书本名称" />
+
+    <table border="1" width="700" style="border-collapse: collapse">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>书名</th>
+          <th>作者</th>
+          <th>出版社</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <BOOKMIN v-for="item in list" :key="item.id" :info="item"></BOOKMIN>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -29,13 +44,6 @@ export default {
 
         this.list = res.data.data;
       });
-    },
-
-    del(id) {
-      const index = this.list.findIndex((ele) => ele.id == id);
-
-      // console.log(index);
-      this.list.splice(index, 1);
     },
   },
 
