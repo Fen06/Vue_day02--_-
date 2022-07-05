@@ -61,13 +61,16 @@ export default {
       this.$emit('details', val);
     },
     del(id) {
+      // console.log(id);
       this.$axios({
         url: '/api/delbook',
+
         method: 'GET',
+        params: { id: id },
       }).then((res) => {
         console.log(res);
+        alert(res.data.msg + '，请刷新页面显示');
       });
-      this.$emit('del', id);
     },
 
     // del(id) {

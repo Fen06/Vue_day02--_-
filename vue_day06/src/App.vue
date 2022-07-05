@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BOOKMIN :item="list" @del="del" @down="down"></BOOKMIN>
+    <BOOKMIN :item="list" @down="down"></BOOKMIN>
     <BOOKPOST></BOOKPOST>
   </div>
 </template>
@@ -34,32 +34,14 @@ export default {
       });
     },
 
-    // down(val){
-
-    // },
-
-    del(id) {
-      const index = this.list.findIndex((ele) => ele.id == id);
-
-      this.list.splice(index, 1);
-      console.log(index);
-    },
-
     down(val) {
-      // console.log(this.list[index]);
       console.log(val);
-
       if (val == this.list.bookname) {
         alert(11111);
       } else {
         alert('没找到');
       }
     },
-
-    // add(val) {
-    //   // console.log(typeof val);
-    //   this.list.push(val);
-    // },
   },
 
   mounted() {
