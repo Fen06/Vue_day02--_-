@@ -26,6 +26,7 @@ export default {
       this.$axios({
         url: '/api/getbooks',
         method: 'GET',
+        params: {},
       }).then((res) => {
         console.log(res);
         // this.list = res;
@@ -35,12 +36,8 @@ export default {
     },
 
     down(val) {
-      console.log(val);
-      if (val == this.list.bookname) {
-        alert(11111);
-      } else {
-        alert('没找到');
-      }
+      this.list = val;
+      
     },
   },
 

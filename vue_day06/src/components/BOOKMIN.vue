@@ -4,7 +4,7 @@
       type="text"
       placeholder="搜索书本名称"
       @keydown.enter="down"
-      v-model="bookName"
+      v-model.trim="bookName"
     />
 
     <table border="1" width="700" style="border-collapse: collapse">
@@ -86,8 +86,17 @@ export default {
         // console.log(this.$parent.list[0].bookname);
         return alert('内容不能为空');
       }
-
-      this.$emit('down', this.bookName);
+      this.$axios({
+        url: '/api/getbooks',
+        method: 'GET',
+        params: { bookname: this.bookName },
+      }).then((res) => {
+        if (res.data.data.length == 0) {
+          return alert('没找到哦');
+        }
+        this.$emit('down', res.data.data);
+      });
+      this.bookName = '';
     },
   },
 };
