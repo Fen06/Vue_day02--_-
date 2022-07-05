@@ -46,7 +46,6 @@ export default {
         this.NewBook.newauthor = '';
         this.NewBook.newXXX = '';
       });
-      //   this.$emit('add', this.NewBook);
     },
   },
 };

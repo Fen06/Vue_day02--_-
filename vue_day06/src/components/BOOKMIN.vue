@@ -52,13 +52,9 @@ export default {
 
   methods: {
     details(val) {
-      // console.log(val);
-
-      // console.log(this.list);
       this.box = [
         `序号为：${val.id}, 书名为：${val.bookname}, 作者为：${val.author}`,
       ];
-      this.$emit('details', val);
     },
     del(id) {
       // console.log(id);
@@ -72,14 +68,6 @@ export default {
         alert(res.data.msg + '，请刷新页面显示');
       });
     },
-
-    // del(id) {
-    //   this.$emit('del', id);
-    // },
-
-    // down() {
-    //   this.$emit('down');
-    // },
 
     down() {
       if (this.bookName.length === 0) {

@@ -29,7 +29,6 @@ export default {
         params: {},
       }).then((res) => {
         console.log(res);
-        // this.list = res;
 
         this.list = res.data.data;
       });
@@ -37,7 +36,6 @@ export default {
 
     down(val) {
       this.list = val;
-      
     },
   },
 
