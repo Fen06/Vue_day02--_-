@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <input type="text" placeholder="搜索书本名称" />
+    <input
+      type="text"
+      placeholder="搜索书本名称"
+      @keydown.enter="down"
+      v-model="bookName"
+    />
 
     <table border="1" width="700" style="border-collapse: collapse">
       <thead>
@@ -20,11 +25,13 @@
           <td>{{ item.publisher }}</td>
           <td>
             <button @click="del(item.id)">删除</button>
-            <button>详情</button>
+            <button @click="details(item)">详情</button>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div id="box">{{ box }}</div>
   </div>
 </template>
 
@@ -37,15 +44,56 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      bookName: '',
+      box: '',
+    };
   },
 
   methods: {
+    details(val) {
+      // console.log(val);
+
+      // console.log(this.list);
+      this.box = [
+        `序号为：${val.id}, 书名为：${val.bookname}, 作者为：${val.author}`,
+      ];
+      this.$emit('details', val);
+    },
     del(id) {
+      this.$axios({
+        url: '/api/delbook',
+        method: 'GET',
+      }).then((res) => {
+        console.log(res);
+      });
       this.$emit('del', id);
+    },
+
+    // del(id) {
+    //   this.$emit('del', id);
+    // },
+
+    // down() {
+    //   this.$emit('down');
+    // },
+
+    down() {
+      if (this.bookName.length === 0) {
+        // console.log(this.$parent.list[0].bookname);
+        return alert('内容不能为空');
+      }
+
+      this.$emit('down', this.bookName);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+#box {
+  width: 500px;
+  height: 100px;
+  border: 1px solid red;
+}
+</style>
