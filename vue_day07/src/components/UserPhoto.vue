@@ -8,11 +8,11 @@
     <p>选择所在地区(实名认证所在地)</p>
 
     <div id="zg">
-      <input type="radio" v-model="dl" name="zg" />中国大陆
-      <input type="radio" v-model="xg" name="zg" />中国香港
+      <input type="radio" name="zg" />中国大陆
+      <input type="radio" name="zg" />中国香港
     </div>
     <keep-alive>
-      <component :is="comName"> </component>
+      <component :is="comName"></component>
     </keep-alive>
   </div>
 </template>

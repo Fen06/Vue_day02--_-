@@ -1,14 +1,41 @@
 <template>
   <div>
-    <p>手机号码</p>
-    <input type="text" class="usersj" placeholder="请输入手机号码" />
-    <input type="text" class="useryzm" placeholder="输入验证码" />
-    <button id="yzm">发送验证码</button>
+    <!-- <p>手机号码</p> -->
+    <!-- <slot name="photo"></slot>
+    <slot name="photoYz"></slot> -->
+    <!-- <input type="text" class="usersj" placeholder="请输入手机号码" />
+    <input type="text" class="useryzm" placeholder="输入验证码" /> -->
+    <PPhoto>
+      <template v-slot:photo="scoped">
+        <input
+          type="text"
+          v-model="scoped.row.ph"
+          class="usersj"
+          placeholder="请输入手机号码"
+        />
+      </template>
+
+      <template v-slot:photoYz="scoped">
+        <input
+          type="text"
+          v-model="scoped.row.Yph"
+          class="useryzm"
+          placeholder="输入验证码"
+        />
+      </template>
+    </PPhoto>
+    <template> </template>
+    <!-- <button id="yzm">发送验证码</button> -->
   </div>
 </template>
 
 <script>
-export default {};
+import PPhoto from '../02/02Photo.vue';
+export default {
+  components: {
+    PPhoto,
+  },
+};
 </script>
 
 <style scoped>
