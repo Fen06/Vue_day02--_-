@@ -5,7 +5,7 @@
       <input type="password" placeholder="请输入密码" id="mm" />
       <br />
       <input
-        type="text"
+        type="password"
         class="useryzm"
         placeholder="再次输入登录密码"
         id="mmm"
@@ -14,7 +14,7 @@
 
     <div>
       <p id="xt">邀请码(选填)</p>
-      <input type="password" placeholder="请输入密码" id="yzm" />
+      <input type="password" placeholder="选填" id="yzm" />
     </div>
   </div>
 </template>
