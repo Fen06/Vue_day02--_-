@@ -1,14 +1,17 @@
 <template>
   <div class="box">
     <UserPhoto></UserPhoto>
+    <Userpass></Userpass>
   </div>
 </template>
 
 <script>
 import UserPhoto from './components/UserPhoto.vue';
+import Userpass from './components/Userpassword.vue';
 export default {
   components: {
     UserPhoto,
+    Userpass,
   },
 };
 </script>

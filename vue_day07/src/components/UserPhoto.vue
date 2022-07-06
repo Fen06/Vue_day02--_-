@@ -33,6 +33,7 @@ export default {};
 #bt .sj {
   width: 80px;
   height: 30px;
+  margin-top: 50px;
 }
 
 #bt .yx {
