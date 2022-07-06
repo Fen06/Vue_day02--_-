@@ -6,21 +6,95 @@
         <th>姓名</th>
         <th>年龄</th>
         <th>头像</th>
+        <th>TYPE类型</th>
       </tr>
     </thead>
     <thead>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="(item, index) in list" :key="index">
+        <td>{{ item.id }}</td>
+
+        <td v-if="item.name.length == 0">
+          <slot name="name0" :row="item">name</slot>
+        </td>
+        <td>
+          <slot name="name" :row="item"></slot>
+        </td>
+
+        <td v-if="item.age.length == 0">
+          <slot name="age0" :row="item"></slot>
+        </td>
+        <td>
+          <slot name="age" :row="item"></slot>
+        </td>
+        <td v-if="item.type == 0">
+          <slot name="toux1" :row="item"></slot>
+        </td>
+
+        <td v-if="item.type == 1">
+          <slot name="toux2" :row="item"></slot>
+        </td>
+
+        <td v-if="item.type == 2">
+          <slot name="toux3" :row="item"></slot>
+        </td>
+        <td>
+          <slot name="type" :row="item"></slot>
+        </td>
       </tr>
     </thead>
   </table>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      list: [
+        {
+          id: 100,
+
+          name: '小传同学',
+
+          age: 18,
+          headImgUrl:
+            'http://yun.itheima.com/Upload/./Images/20210303/603f2d2153241.jpg',
+          type: 0, // 0 显示成a标签
+        },
+        {
+          id: 101,
+          name: '小黑同学',
+
+          age: 25,
+          headImgUrl:
+            'http://yun.itheima.com/Upload/./Images/20210304/6040b101a18ef.jpg',
+          type: 1, // 1 显示成图片
+        },
+        {
+          id: 102,
+          name: '智慧同学',
+
+          age: 21,
+          headImgUrl:
+            'http://yun.itheima.com/Upload/./Images/20210302/603e0142e535f.jpg',
+          type: 1, // 1 显示成图片
+        },
+        {
+          id: 103,
+          name: '智慧同学',
+
+          age: 21,
+          headImgUrl:
+            'http://yun.itheima.com/Upload/./Images/20210302/603e0142e535f.jpg',
+          type: 2, // 2 显示成文本
+        },
+      ],
+    };
+  },
+
+  methods: {
+    getType() {},
+  },
+};
 </script>
 
 <style></style>
