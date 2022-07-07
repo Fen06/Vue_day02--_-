@@ -16,6 +16,15 @@ Vue.directive('fous', {
   },
 });
 
+Vue.directive('User', {
+  inserted(el) {
+    if (el.id != 'Admin') {
+      el.style.display = 'none';
+    }
+    console.log(el.id);
+  },
+});
+
 new Vue({
   render: (h) => h(App),
 }).$mount('#app');

@@ -23,6 +23,7 @@
           v-if="scope.row.inputShow"
           @blur="scope.row.inputShow = false"
           @keydown.enter="enter(scope.row)"
+          @keydown.esc="scope.row.inputValue = ''"
         />
         <button
           class="btn btn-primary btn-sm add-tag"
@@ -42,6 +43,14 @@
         <td>
           <button class="btn btn-danger btn-sm" @click="del(scope.row.id)">
             删除
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            style="margin-left: 18px"
+            id="Admin"
+            v-User
+          >
+            管理
           </button>
         </td>
       </template>

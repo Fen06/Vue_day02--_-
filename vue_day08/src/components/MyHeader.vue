@@ -11,6 +11,12 @@
 // 3. 内部使用props变量的值
 // 4. 外部使用时, 遵守变量名作为属性名, 值的类型遵守
 export default {
+  data() {
+    return {
+
+    };
+  },
+
   props: {
     background: String, // 外部插入此变量的值, 必须是字符串类型, 否则报错
     color: {
@@ -21,6 +27,8 @@ export default {
       type: String,
       required: true, // 必须传入此变量的值
     },
+
+    
   },
 };
 </script>

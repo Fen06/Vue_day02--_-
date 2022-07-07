@@ -18,6 +18,7 @@ import MyUserInfo from './view/MyUserInfo.vue';
 export default {
   data() {
     return {
+      User: ['Admin', 'developer', 'user'],
       comName: 'MyGoodsList',
       tabList: [
         {
