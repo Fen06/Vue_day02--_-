@@ -18,7 +18,7 @@ import MyUserInfo from './view/MyUserInfo.vue';
 export default {
   data() {
     return {
-      comName: 'MyGoodsSearch',
+      comName: 'MyGoodsList',
       tabList: [
         {
           iconText: 'icon-shangpinliebiao',
