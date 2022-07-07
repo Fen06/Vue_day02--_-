@@ -12,17 +12,17 @@
     <thead>
       <tr v-for="(item, index) in list" :key="index">
         <td>{{ item.id }}</td>
-
+        <!-- 
         <td v-if="item.name.length == 0">
           <slot name="name0" :row="item">name</slot>
-        </td>
+        </td> -->
         <td>
           <slot name="name" :row="item"></slot>
         </td>
 
-        <td v-if="item.age.length == 0">
+        <!-- <td v-if="item.age.length == 0">
           <slot name="age0" :row="item"></slot>
-        </td>
+        </td> -->
         <td>
           <slot name="age" :row="item"></slot>
         </td>
