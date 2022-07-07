@@ -13,6 +13,22 @@
         <td>{{ scope.row.goods_name }}</td>
         <td>{{ scope.row.goods_price }}</td>
         <!-- <td>{{ scope.row.id }}</td> -->
+
+        <input
+          type="text"
+          class="tag-input form-control"
+          style="width: 100px"
+          v-fous
+          v-if="scope.row.inputShow"
+          @keydown.enter="enter(scope.row)"
+        />
+        <button
+          class="btn btn-primary btn-sm add-tag"
+          v-else
+          @click="scope.row.inputShow = true"
+        >
+          +Tag
+        </button>
         <span
           class="badge badge-warning"
           v-for="item in scope.row.tags"
@@ -20,6 +36,7 @@
           style="margin-left: 8px"
           >{{ item }}</span
         >
+
         <td>
           <button class="btn btn-danger btn-sm" @click="del(scope.row.id)">
             删除
@@ -47,6 +64,9 @@ export default {
     this.$axios({
       url: '/api/goods',
     }).then((res) => {
+      res.data.data.forEach((ele) => {
+        ele.inputShow = false;
+      });
       console.log(res);
       this.list = res.data.data;
     });

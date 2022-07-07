@@ -10,6 +10,12 @@ import axios from 'axios';
 axios.defaults.baseURL = ' https://www.escook.cn';
 Vue.prototype.$axios = axios;
 
+Vue.directive('fous', {
+  inserted(el) {
+    el.focus();
+  },
+});
+
 new Vue({
   render: (h) => h(App),
 }).$mount('#app');
