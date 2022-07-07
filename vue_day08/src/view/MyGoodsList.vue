@@ -19,7 +19,9 @@
           class="tag-input form-control"
           style="width: 100px"
           v-fous
+          v-model="scope.row.inputValue"
           v-if="scope.row.inputShow"
+          @blur="scope.row.inputShow = false"
           @keydown.enter="enter(scope.row)"
         />
         <button
@@ -76,6 +78,15 @@ export default {
     del(id) {
       const index = this.list.findIndex((ele) => ele.id == id);
       this.list.splice(index, 1);
+    },
+
+    enter(obj) {
+      //   console.log(obj);
+      if (obj.inputValue.trim() == '') {
+        return alert('内容不能为空');
+      }
+      obj.tags.push(obj.inputValue);
+      obj.inputValue = '';
     },
   },
 };
