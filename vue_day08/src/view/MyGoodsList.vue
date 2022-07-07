@@ -12,9 +12,18 @@
         <td>{{ scope.row.id }}</td>
         <td>{{ scope.row.goods_name }}</td>
         <td>{{ scope.row.goods_price }}</td>
-        <td>{{ scope.row.tags }}</td>
+        <!-- <td>{{ scope.row.id }}</td> -->
+        <span
+          class="badge badge-warning"
+          v-for="item in scope.row.tags"
+          :key="item"
+          style="margin-left: 8px"
+          >{{ item }}</span
+        >
         <td>
-          <button class="btn btn-danger btn-sm">删除</button>
+          <button class="btn btn-danger btn-sm" @click="del(scope.row.id)">
+            删除
+          </button>
         </td>
       </template>
     </MyTable>
@@ -41,6 +50,13 @@ export default {
       console.log(res);
       this.list = res.data.data;
     });
+  },
+
+  methods: {
+    del(id) {
+      const index = this.list.findIndex((ele) => ele.id == id);
+      this.list.splice(index, 1);
+    },
   },
 };
 </script>
