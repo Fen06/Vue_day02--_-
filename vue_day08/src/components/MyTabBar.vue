@@ -1,6 +1,12 @@
 <template>
   <div class="my-tab-bar">
-    <div class="tab-item" v-for="item in list" :key="item">
+    <div
+      class="tab-item"
+      :class="{ current: item.componentName == currentIndex }"
+      v-for="item in list"
+      :key="item.componentName"
+      @click="cut(item.componentName)"
+    >
       <!-- 图标 -->
       <span class="iconfont" :class="item.iconText"></span>
       <!-- 文字 -->
@@ -13,13 +19,26 @@
 export default {
   props: {
     list: {
-      type: Object,
+      type: Array,
       validator(val) {
         if (val.length >= 2 && val.length <= 5) {
           return true;
         }
         return false;
       },
+    },
+  },
+  data() {
+    return {
+      currentIndex: 'MyGoodsList',
+    };
+  },
+  methods: {
+    cut(val) {
+      console.log(val);
+      this.currentIndex = val;
+
+      this.$emit('changeCurrent', val);
     },
   },
 };
@@ -41,6 +60,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
   }
 }
 
