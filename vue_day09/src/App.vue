@@ -1,10 +1,9 @@
 <template>
   <div>
     <div>
-      <router-link to="/shouye">首页</router-link> &nbsp;
-      <router-link to="/fenlei">分类</router-link>&nbsp;
-      <router-link to="/dingdan">订单</router-link>&nbsp;
-       <router-link to="/myde">我的</router-link>&nbsp;
+      <router-link to="/zhuye">主页</router-link> &nbsp;
+      <router-link to="/xinwen">新闻</router-link>&nbsp;
+      <router-link to="/tiyu">体育</router-link>&nbsp;
 
     </div>
     <div>
