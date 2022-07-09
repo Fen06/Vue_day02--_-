@@ -1,43 +1,54 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-import ZhuYe from '@/PE/ZhuYe.vue';
-import XinWen from '@/PE/XinWen.vue';
-import TiYu from '@/PE/TiYu.vue';
-
-import Tiyu from '@/PE/comm/Tiyu.vue';
-import Guonei from '@/PE/comm/Guonei.vue';
-import Guowai from '@/PE/comm/Guowai.vue';
-
+import ULRouter from '@/English/ULRouter';
+import Contacts from '@/English/Contacts';
+import About from '@/English/About';
 import Not from '@/views/No.vue';
 
+import A from '@/English/XEnglish/A.vue';
+import B from '@/English/XEnglish/B.vue';
+import C from '@/English/XEnglish/C.vue';
+// import Bb from '@/English/XEnglish/XXEnglish/Bb.vue';
+import Bone from '@/English/XEnglish/XXEnglish/B1.vue';
+import Btwo from '@/English/XEnglish/XXEnglish/B2.vue';
 import VueRoute from 'vue-router';
 Vue.use(VueRoute);
 const routes = [
   {
     path: '/',
-    component: ZhuYe,
+    component: ULRouter,
   },
-  { path: '/zhuye', component: ZhuYe },
-  { path: '/xinwen', component: XinWen },
+  { path: '/ULRouter', component: ULRouter },
   {
-    path: '/tiyu',
-    component: TiYu,
+    path: '/Contacts',
+    component: Contacts,
     children: [
       {
-        path: 'ttiyu',
-        component: Tiyu,
+        path: 'a',
+        component: A,
       },
       {
-        path: 'guonei',
-        component: Guonei,
+        path: 'b',
+        component: B,
+        children: [
+          {
+            path: 'B1',
+            component: Bone,
+          },
+          {
+            path: 'B2',
+            component: Btwo,
+          },
+        ],
       },
       {
-        path: 'guowai',
-        component: Guowai,
+        path: 'c',
+        component: C,
       },
     ],
   },
+  { path: '/About', component: About },
 
   {
     path: '*',
