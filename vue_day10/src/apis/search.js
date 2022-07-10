@@ -11,3 +11,4 @@ export const getHotList = (params) =>
     url: '/search/hot',
     params,
   });
+

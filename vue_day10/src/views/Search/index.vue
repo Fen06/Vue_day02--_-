@@ -1,6 +1,11 @@
 <template>
   <div>
-    <van-search shape="round" placeholder="请输入搜索关键词" v-model="value" />
+    <van-search
+      shape="round"
+      placeholder="请输入搜索关键词"
+      v-model="value"
+      @input="inputFn"
+    />
     <!-- 热门搜索 -->
 
     <template v-if="Searchlist.length == 0">
@@ -16,6 +21,7 @@
           :key="item.first"
           style="margin: 0 6px 6px 0"
           @click="clickFn(item.first)"
+          @input="inputFn"
         >
           {{ item.first }}
         </van-tag>
@@ -49,6 +55,7 @@ export default {
       Searchlist: [],
       loading: false,
       finished: false,
+      page: 1,
     };
   },
   created() {
@@ -56,6 +63,14 @@ export default {
   },
 
   methods: {
+    async getLish() {
+      return await getSearchListApi({
+        keywords: this.value,
+        limit: 20,
+        offset: (this.page - 1) * 20,
+      });
+    },
+
     async getHotList() {
       try {
         const res = await getHotListApi();
@@ -70,15 +85,50 @@ export default {
       try {
         const res = await getSearchListApi({
           keywords: this.value,
+          limit: 20,
+          offset: (this.page - 1) * 20,
+        });
+        console.log(res);
+        this.Searchlist = res.data.result.songs;
+
+        // this.hotList = res.data.result.hots;
+      } catch (e) {
+        console.log('e', e);
+        this.$Toast.fail('获取失败');
+      }
+    },
+    // onLoad() {},
+
+    async inputFn() {
+      if (this.timer) clearTimeout(this.timer);
+      this.timer = setTimeout(async () => {
+        this.finished = false;
+        if (this.value.length == 0) {
+          this.Searchlist = [];
+          return;
+        }
+        const res = await getSearchListApi({
+          keywords: this.value,
         });
         console.log(res);
         this.Searchlist = res.data.result.songs;
         // this.hotList = res.data.result.hots;
-      } catch (e) {
-        console.log('e', e);
-      }
+        if (res.data.result.songs === undefined) {
+          this.Searchlist = [];
+          return;
+        }
+        this.Searchlist = res.data.result.songs;
+        this.loading = false;
+      }, 900);
     },
-    onLoad() {},
+
+    async onLoad() {
+      this.page++;
+      const res = await this.getLish();
+      console.log(res);
+      this.Searchlist = [...this.Searchlist, ...res.data.result.songs];
+      this.loading = false;
+    },
   },
 };
 </script>
