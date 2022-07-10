@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <h1>头部</h1>
+  <div class="layout">
+    <van-nav-bar :title="$route.meta.title" />
     <router-view></router-view>
-    <h1>Footer</h1>
+    <van-tabbar route>
+      <van-tabbar-item to="/layout/home" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item to="/layout/search" icon="search">搜索</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: '',
+    };
+  },
+};
 </script>
 
 <style></style>
