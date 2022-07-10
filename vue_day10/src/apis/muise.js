@@ -5,3 +5,9 @@ export const getRandomList = (params) =>
     url: '/personalized',
     params,
   });
+
+export const getNewList = (params) =>
+  request({
+    url: '/personalized/newsong',
+    params,
+  });

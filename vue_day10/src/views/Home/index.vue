@@ -8,20 +8,40 @@
         <p class="music-name van-multi-ellipsis--l2">{{ item.name }}}</p>
       </van-grid-item>
     </van-grid>
+
+    <van-cell title="最佳匹配" />
+    <van-cell
+      v-for="item in newList"
+      :key="item.id"
+      :label="`${
+        (item.song &&
+          item.song.artists &&
+          item.song.artists[0] &&
+          item.song.artists[0].name) ||
+        '未知歌手'
+      }-${item.name}`"
+      :title="item.name"
+    >
+      <template>
+        <van-icon color="#000" name="play-circle-o" size="28" />
+      </template>
+    </van-cell>
   </div>
 </template>
 
 <script>
-import { getRandomListApi } from '@/apis/index';
+import { getRandomListApi, getNewListApi } from '@/apis/index';
 
 export default {
   data() {
     return {
       list: [],
+      newList: [],
     };
   },
   created() {
     this.getRanList();
+    this.getNewList();
   },
   methods: {
     async getRanList() {
@@ -29,8 +49,19 @@ export default {
         const res = await getRandomListApi({
           limit: 6,
         });
-        console.log(res.data);
+        // console.log(res.data);
         this.list = res.data.result;
+      } catch (e) {
+        console.log('e', e);
+      }
+    },
+
+    async getNewList() {
+      try {
+        const res = await getNewListApi();
+        console.log(res);
+        // this.list = res.data.result;
+        this.newList = res.data.result;
       } catch (e) {
         console.log('e', e);
       }
@@ -58,6 +89,10 @@ export default {
 
   /deep/.van-grid-item__content {
     padding: 10px 0px;
+  }
+  .van-cell__value {
+    line-height: 45px;
+    flex: 0 0 30px;
   }
 }
 </style>
