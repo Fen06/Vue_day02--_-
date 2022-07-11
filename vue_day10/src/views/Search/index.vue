@@ -36,17 +36,26 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <van-cell
+        <!-- <van-cell
           v-for="item in Searchlist"
           :key="item.id"
           :title="item.name"
-        />
+        /> -->
+        <Songitem
+          v-for="item in Searchlist"
+          :key="item.id"
+          :title="item.name"
+          :name="item.name"
+          :author="item.ar[0].name"
+        >
+        </Songitem>
       </van-list>
     </template>
   </div>
 </template>
 <script>
 import { getHotListApi, getSearchListApi } from '@/apis';
+import Songitem from '@/components/SongItem';
 export default {
   data() {
     return {
@@ -57,6 +66,10 @@ export default {
       finished: false,
       page: 1,
     };
+  },
+
+  components: {
+    Songitem,
   },
   created() {
     this.getHotList();

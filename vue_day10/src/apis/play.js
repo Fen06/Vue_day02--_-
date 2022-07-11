@@ -1,4 +1,4 @@
-import request from '@/suilt/request.js';
+import request from '@/suilt/request';
 
 export const getSongById = (id) =>
   request({
@@ -6,8 +6,9 @@ export const getSongById = (id) =>
     method: 'GET',
   });
 
+// 播放页 - 获取歌词
 export const getLyricById = (id) =>
   request({
-    url: `/lyric?ids=${id}`,
+    url: `/lyric?id=${id}`,
     method: 'GET',
   });
