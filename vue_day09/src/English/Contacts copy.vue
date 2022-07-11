@@ -1,14 +1,13 @@
 <template>
   <div>
     <ul>
-      <li id="one">
-        <router-link :to="it">ABCD</router-link>
-        <!--  -->
+      <li>
+        <router-link to="/Contacts/a">ABCD</router-link>
       </li>
       <li><router-link to="/Contacts/b">EFGH</router-link></li>
       <li><router-link to="/Contacts/c">IJKL</router-link></li>
     </ul>
-    <button @click='btn'>展示</button>
+    <button>展示</button>
     <div>
       <router-view></router-view>
     </div>
@@ -19,16 +18,10 @@
 export default {
   data() {
     return {
-      it: '/Contacts/a',
+      
     };
   },
-  methods: {
-    btn() {
-      const one = document.getElementById('one');
-      console.log(one);
-      
-    },
-  },
+  methods: {},
 };
 </script>
 

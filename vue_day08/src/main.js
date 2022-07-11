@@ -21,7 +21,7 @@ Vue.directive('User', {
     if (el.id != 'Admin') {
       el.style.display = 'none';
     }
-    console.log(el.id);
+    // console.log(el.id);
   },
 });
 

@@ -47,8 +47,8 @@
           <button
             class="btn btn-danger btn-sm"
             style="margin-left: 18px"
-            id="Admin"
             v-User
+            id="Admin"
           >
             管理
           </button>
@@ -78,7 +78,7 @@ export default {
       res.data.data.forEach((ele) => {
         ele.inputShow = false;
       });
-      console.log(res);
+      console.log(res.data.data);
       this.list = res.data.data;
     });
   },
