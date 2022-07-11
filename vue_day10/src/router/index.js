@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Layout from '@/views/Layout/index';
 import Home from '@/views/Home/index';
 import Search from '@/views/Search/index';
+import Play from '@/views/Play/index';
 Vue.use(VueRouter);
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
         },
       },
     ],
+  },
+  {
+    path: '/play',
+    component: Play,
   },
 ];
 
