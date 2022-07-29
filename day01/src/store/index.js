@@ -1,0 +1,25 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+import task from './modules/task'
+import color from './modules/color'
+import createVuexPersisted from 'vuex-persistedstate'
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+  },
+  getters: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+    task,
+    color
+  },
+
+  plugins:[
+     createVuexPersisted()
+  ]
+})
